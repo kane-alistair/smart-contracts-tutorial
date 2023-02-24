@@ -18,6 +18,9 @@ class Blockchain {
     newBlock.previousHash = this.getLatestBlock().hash;
     newBlock.hash = newBlock.calculateHash();
     validateBlock(newBlock);
+    if (this.isChainValid()) {
+      throw new Error("Chain is invalid!!!");
+    }
     this.chain.push(newBlock);
   }
 
